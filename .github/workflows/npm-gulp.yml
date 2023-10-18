@@ -1,0 +1,67 @@
+name: Github build
+
+on:
+  push:
+    branches:
+      - 'develop'
+      - 'master'
+      - 'qa'
+      - 'workflowtest'
+
+jobs:
+  build_css:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          node-version: '16'
+
+      - name: Checkout source Git branch
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.ref }}
+          fetch-depth: 10
+          submodules: true
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v3.6.0
+        with:
+          node-version: '16'
+
+      - name: Run custom module code checks
+        run: |
+          cd /home/runner/work/GSA-FAI-D9/GSA-FAI-D9/drupal/web/modules/custom
+          composer require --dev squizlabs/php_codesniffer
+          vendor/bin/phpcs --standard=PSR2 --ignore="vendor/*" . || echo "PHP code sniffing errors found, but build continues"
+          
+          cd /home/runner/work/GSA-FAI-D9/GSA-FAI-D9/drupal/web/themes/custom/uswds_base_fai
+          npm install stylelint stylelint-scss --save-dev
+          npx stylelint 'sass/**/*.scss' --quiet || echo "Linting errors found, but build continues"
+
+      - name: Create new artifact branch
+        run:
+          git checkout -b WORKFLOW/$GITHUB_REF_NAME
+
+      - name: NPM Install node_modules
+        run: |
+          cd /home/runner/work/GSA-FAI-D9/GSA-FAI-D9/drupal/web/themes/custom/uswds_base_fai
+          npm install autoprefixer gulp gulp-replace sass gulp-sass gulp-sourcemaps gulp-rename gulp-svg-sprite@^1.5.0 gulp-postcss postcss postcss-csso uswds uswds-gulp@github:uswds/uswds-gulp --save-dev
+
+      - name: Compile CSS from SCSS files
+        run: |
+          cd /home/runner/work/GSA-FAI-D9/GSA-FAI-D9/drupal/web/themes/custom/uswds_base_fai
+          gulp build-sass
+
+      - name: Branch handling prep for deployment to expose CSS to the remote for saving.
+        run: rm -f ./drupal/web/themes/custom/uswds_base_fai/.gitignore
+
+      - name: Isolate the build artifacts from the main branches, so they are only exposed to Jenkins.
+        run: |
+          git config --local user.email 'action@github.com'
+          git config --local user.name 'GitHub Action'
+          git add -f ./drupal/web/themes/custom/uswds_base_fai/css/*
+          git add -f ./drupal/web/themes/custom/uswds_base_fai/package.json
+          git add -f ./drupal/web/themes/custom/uswds_base_fai/package-lock.json
+          git commit -m "CSS Compiled by GitHub Workflow build_css.yml. Commit SHA $GITHUB_SHA"
+          git push origin WORKFLOW/$GITHUB_REF_NAME -f
