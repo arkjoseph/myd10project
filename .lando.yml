@@ -1,0 +1,4 @@
+name: my-first-drupal-10-app
+recipe: drupal10
+config:
+  webroot: web
