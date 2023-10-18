@@ -1,0 +1,147 @@
+/*
+----------------------------------------
+USWDS with settings overrides
+----------------------------------------
+Uncomment the following lines and add a list of changed settings
+in the form $setting: value,
+----------------------------------------
+*/
+
+@use "uswds-core" with (
+  $theme-process-list-font-size: 4,
+  $theme-step-indicator-label-font-size: 4,
+  $theme-body-font-size: 4,
+  $theme-show-notifications: false,
+  $theme-image-path: "../img",
+  $theme-font-type-serif: 'source-sans-pro',
+  $theme-font-weight-semibold: true,
+  $theme-generate-all-weights: true,
+
+  // Breakpoints
+  $theme-utility-breakpoints: (
+          "card": false,
+    // 160px
+          "card-lg": false,
+    // 240px
+          "mobile": true,
+    // 320px
+          "mobile-lg": true,
+    // 480px
+          "tablet": true,
+    // 640px
+          "tablet-lg": true,
+    // 800px
+          "desktop": true,
+    // 1024px
+          "desktop-lg": false,
+    // 1200px
+          "widescreen": true,
+    // 1400px
+  ),
+  //
+  //// Spacing
+  $theme-input-line-height: 5,
+  //$theme-site-max-width: "widescreen",
+  $theme-site-margins-breakpoint: 'widescreen',
+  //$theme-site-margins-width: 6,
+  //
+  $theme-banner-max-width: 'widescreen',
+  $theme-header-max-width: "widescreen",
+  $theme-header-min-width: "desktop-lg",
+
+  $theme-grid-container-max-width: 'widescreen',
+  $theme-footer-max-width: 'widescreen',
+  // Utilities
+  $utilities-use-important: true,
+  //$g-size-touch-target: 2.4rem,
+  $output-these-utilities: (
+  "add-list-reset",
+  "display",
+  "font",
+  "order",
+  "position",
+  "width",
+  "max-width",
+  "min-width",
+  "display",
+  "height",
+  "float",
+  "background-color",
+  "border",
+  "border-color",
+  "border-radius",
+  "border-style",
+  "border-width",
+  "bottom",
+  "box-shadow",
+  "color",
+  "display",
+  "flex",
+  "flex-direction",
+  "font-family",
+  "font-feature",
+  "font-style",
+  "font-weight",
+  "letter-spacing",
+  "margin",
+  "margin-horizontal",
+  "margin-vertical",
+  "whitespace",
+  "padding",
+  "text-align",
+  "pin",
+  "z-index",
+),
+
+  //$output-all-utilities: true,
+  //// GSA utility settings
+  $padding-settings: (
+          output: true,
+          responsive: true,
+          active: false,
+          focus: false,
+          hover: false,
+          visited: false
+  ),
+  $position-settings: (
+          output: true,
+          responsive: true,
+          active: false,
+          focus: false,
+          hover: false,
+          visited: false
+  ),
+  $width-settings: (
+          output: true,
+          responsive: true,
+          active: false,
+          focus: false,
+          hover: false,
+          visited: false
+  ),
+  $display-settings: (
+          output: true,
+          responsive: true,
+          active: false,
+          focus: false,
+          hover: false,
+          visited: false
+  ),
+  $height-settings: (
+          output: true,
+          responsive: true,
+          active: false,
+          focus: false,
+          hover: false,
+          visited: false,
+  ),
+
+  $float-settings: (
+          output: true,
+          responsive: true,
+          active: false,
+          focus: false,
+          hover: false,
+          visited: false,
+  )
+);
