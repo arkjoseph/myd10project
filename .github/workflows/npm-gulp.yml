@@ -34,13 +34,12 @@ jobs:
           git checkout -b WORKFLOW/$GITHUB_REF_NAME
 
       - name: NPM Install node_modules
-        run: |
-          cd /arkjoseph/myd10project/web/themes/custom/sample_subtheme
-          npm install
+        run:
+          working-directory: 'myd10project/web/themes/custom/sample_subtheme'
 
       - name: Compile CSS from SCSS files
         run: |
-          cd /arkjoseph/myd10project/web/themes/custom/sample_subtheme
+          npm install
           npx gulp compileSass
 
 #      - name: Branch handling prep for deployment to expose CSS to the remote for saving.
