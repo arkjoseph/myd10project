@@ -34,7 +34,7 @@ jobs:
           git checkout -b WORKFLOW/$GITHUB_REF_NAME
 
       - name: NPM Install node_modules
-        working-directory: './myd10project/web/themes/custom/sample_subtheme'
+        working-directory: '/web/themes/custom/sample_subtheme'
         run:
           npm install
           npx gulp compileSass
