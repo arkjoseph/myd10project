@@ -37,7 +37,9 @@ jobs:
         working-directory: '/home/runner/work/myd10project/myd10project/web/themes/custom/sample_subtheme'
         run:
           npm install
-          npx gulp compileSass
+          echo "we should be in subtheme dir"
+          pwd
+#          npx gulp compileSass
 
 #      - name: Branch handling prep for deployment to expose CSS to the remote for saving.
 #        run: rm -f ./drupal/web/themes/custom/uswds_base_fai/.gitignore
