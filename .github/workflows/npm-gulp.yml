@@ -51,7 +51,7 @@ jobs:
           git commit -am "workflow action completed";
 
       - name: Push changes
-        uses:
+        uses: ad-m/github-push-action@develop
         run:
           git push origin WORKFLOW/$GITHUB_REF_NAME -f
 
