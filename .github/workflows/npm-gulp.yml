@@ -52,7 +52,7 @@ jobs:
 
       - name: Push changes
         run:
-          git push origin WORKFLOW/$GITHUB_REF_NAME -f
+          git push;
 
 #         - name: Isolate the build artifacts from the main branches, so they are only exposed to Jenkins.
 #        run:
