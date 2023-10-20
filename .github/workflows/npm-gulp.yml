@@ -10,9 +10,11 @@ on:
 
 jobs:
   build_css:
+    # Runner Name
     runs-on: ubuntu-latest
 
     steps:
+      # Checks-out repo for job
       - uses: actions/checkout@v2
         with:
           node-version: '16'
@@ -38,7 +40,7 @@ jobs:
         run:
           npm install;
           echo "we should be in subtheme dir";
-          pwd;
+          npm ls;
 #          npx gulp compileSass
 
 #      - name: Branch handling prep for deployment to expose CSS to the remote for saving.
