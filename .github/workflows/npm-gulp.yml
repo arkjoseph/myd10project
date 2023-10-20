@@ -36,9 +36,9 @@ jobs:
       - name: NPM Install node_modules
         working-directory: '/home/runner/work/myd10project/myd10project/web/themes/custom/sample_subtheme'
         run:
-          npm install
-          echo "we should be in subtheme dir"
-          pwd
+          npm install;
+          echo "we should be in subtheme dir";
+          pwd;
 #          npx gulp compileSass
 
 #      - name: Branch handling prep for deployment to expose CSS to the remote for saving.
