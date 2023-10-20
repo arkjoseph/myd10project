@@ -52,7 +52,7 @@ jobs:
 
       - name: Push changes
         run:
-          git push --set-upstream origin WORKFLOW/$GITHUB_REF_NAME -f
+          git push origin WORKFLOW/$GITHUB_REF_NAME -f
 #         - name: Isolate the build artifacts from the main branches, so they are only exposed to Jenkins.
 #        run:
 #          uses: ad-m/github-push-action@develop
