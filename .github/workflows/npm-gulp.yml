@@ -40,7 +40,8 @@ jobs:
         run:
           npm install;
           echo "we should be in subtheme dir";
-          npx gulp --tasks;
+          npx gulp compileSass;
+#          npx gulp --tasks;
 #          npx gulp compileSass
 
 #      - name: Branch handling prep for deployment to expose CSS to the remote for saving.
