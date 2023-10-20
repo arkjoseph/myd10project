@@ -8,7 +8,7 @@ in the form $setting: value,
 */
 
 @use "uswds-core" with (
-  $theme-process-list-font-size: 2,
+  $theme-process-list-font-size: 4,
   $theme-step-indicator-label-font-size: 5,
   $theme-body-font-size: 6,
   $theme-show-notifications: false,
@@ -21,7 +21,7 @@ in the form $setting: value,
   $theme-utility-breakpoints: (
           "card": true,
     // 160px
-          "card-lg": false,
+          "card-lg": true,
     // 240px
           "mobile": true,
     // 320px
