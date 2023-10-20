@@ -53,6 +53,13 @@ jobs:
       - name: Push changes
         run:
           git push origin WORKFLOW/$GITHUB_REF_NAME -f
+
+      - name: Run custom module code checks
+        working-directory: '/home/runner/work/myd10project/myd10project/'
+        run:
+          composer require --dev "squizlabs/php_codesniffer=*";
+          vendor/bin/phpcs --standard=PSR2 --ignore="vendor/*" . || echo "PHP code sniffing errors found, but build continues"
+
 #         - name: Isolate the build artifacts from the main branches, so they are only exposed to Jenkins.
 #        run:
 #          uses: ad-m/github-push-action@develop
