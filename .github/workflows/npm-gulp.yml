@@ -45,10 +45,10 @@ jobs:
 
       - name: Git setup for new commit
         run:
-          git config --local user.email 'action@github.com'
-          git config --local user.name 'GitHub Action'
+          git config --local user.email 'action@github.com';
+          git config --local user.name 'GitHub Action';
           git add -A;
-          git commit -am "workflow action completed"
+          git commit -am "workflow action completed";
 
 
 #         - name: Isolate the build artifacts from the main branches, so they are only exposed to Jenkins.
