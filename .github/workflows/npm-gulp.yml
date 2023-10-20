@@ -52,7 +52,7 @@ jobs:
 
       - name: Push changes
         run:
-          git push;
+          git push --set-upstream origin WORKFLOW/6/merge
 
 #         - name: Isolate the build artifacts from the main branches, so they are only exposed to Jenkins.
 #        run:
