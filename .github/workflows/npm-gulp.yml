@@ -50,6 +50,11 @@ jobs:
           git add -A;
           git commit -am "Theme compiled - $GITHUB_SHA";
 
+      - name: Run Style Linter
+        run:
+          npm install stylelint stylelint-scss --save-dev;
+          npx stylelint 'sass/**/*.scss' --quiet || echo "Linting errors found, but build continues"
+
       - name: Push changes
         run:
           git push origin WORKFLOW/$GITHUB_REF_NAME -f
