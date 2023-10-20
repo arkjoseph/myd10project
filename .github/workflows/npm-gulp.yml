@@ -35,20 +35,27 @@ jobs:
         run:
           git checkout -b WORKFLOW/$GITHUB_REF_NAME
 
-      - name: NPM Install node_modules
+      - name: Install and run gulp
         working-directory: '/home/runner/work/myd10project/myd10project/web/themes/custom/sample_subtheme'
         run:
           npm install;
-          echo "we should be in subtheme dir";
+          echo "Done! Compile and delete gitignore for deployment process";
           npx gulp compileSass;
-#          npx gulp --tasks;
-#          npx gulp compileSass
+          rm -f .gitignore;
 
-#      - name: Branch handling prep for deployment to expose CSS to the remote for saving.
-#        run: rm -f ./drupal/web/themes/custom/uswds_base_fai/.gitignore
+      -name: Git setup for new commit
+       run:
+         git config --local user.email 'action@github.com'
+         git config --local user.name 'GitHub Action'
+         git add -A;
+         git commit -am "workflow action completed"
 
-#      - name: Isolate the build artifacts from the main branches, so they are only exposed to Jenkins.
-#        run: |
+
+#         - name: Isolate the build artifacts from the main branches, so they are only exposed to Jenkins.
+#        run:
+#          uses: ad-m/github-push-action@develop
+#          with:
+#            github_token: ${{ secrets.GITHUB_TOKEN }}
 #          git config --local user.email 'action@github.com'
 #          git config --local user.name 'GitHub Action'
 #          git add -f ./drupal/web/themes/custom/uswds_base_fai/css/*
