@@ -17,30 +17,9 @@ in the form $setting: value,
   $theme-font-weight-semibold: true,
   $theme-generate-all-weights: true,
 
-  // Breakpoints
-  $theme-utility-breakpoints: (
-          "card": true,
-    // 160px
-          "card-lg": true,
-    // 240px
-          "mobile": true,
-    // 320px
-          "mobile-lg": true,
-    // 480px
-          "tablet": true,
-    // 640px
-          "tablet-lg": true,
-    // 800px
-          "desktop": true,
-    // 1024px
-          "desktop-lg": false,
-    // 1200px
-          "widescreen": true,
-    // 1400px
-  ),
   //
   //// Spacing
-  $theme-input-line-height: 5,
+  $theme-input-line-height: 3,
   //$theme-site-max-width: "widescreen",
   $theme-site-margins-breakpoint: 'widescreen',
   //$theme-site-margins-width: 6,
