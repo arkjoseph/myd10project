@@ -1,0 +1,5 @@
+type: theme
+core_version_requirement: ^10
+name: admin sub theme
+base theme: claro
+
